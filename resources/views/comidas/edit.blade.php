@@ -2,7 +2,8 @@
 
 @section('content')
 
-<h1>Actualizar Comida</h1>
+<h1 class="mt-4">Actualizar Comida</h1>
+<a class="button button2" href="{{ route('comidas.index') }}">Regresar</a>
 <hr/>
 
 @if ($errors->any())

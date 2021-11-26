@@ -2,7 +2,8 @@
 
 @section('content')
 
-<h1>Crear Comida</h1>
+<h1 class="mt-4">Crear Comida</h1>
+<a class="button button2" href="{{ route('comidas.index') }}">Regresar</a>
 <hr/>
 
 @if ($errors->any())
@@ -19,7 +20,7 @@
     @csrf
     <input type="text" name="numerodecomida" class="form-control mb-3" placeholder="Numero de Comida"/>
 
-    <input type="number" name="promocion" class="form-control mb-3" placeholder="Promoción"/>
+    <input type="text" name="promocion" class="form-control mb-3" placeholder="Promoción"/>
 
     <textarea class="form-control mb-3" name="descripcion" rows="4" placeholder="Descripción"></textarea>
 

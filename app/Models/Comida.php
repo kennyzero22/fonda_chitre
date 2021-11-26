@@ -10,5 +10,14 @@ class Comida extends Model
     use HasFactory;
 
      protected $primaryKey = 'idcomida';
+
+     protected $fillable = [
+         'serviciodelivery',
+        'numerodecomida',
+        'promocion',
+        'descripcion',
+    ];
+
+     protected $guarded = [];
 }
 

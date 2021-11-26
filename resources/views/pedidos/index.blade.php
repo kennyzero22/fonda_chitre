@@ -7,35 +7,34 @@
         {{ session('success') }}
     </div>
 @endif
+<h1 class="texth1 mt-5">Pedidos</h1>
+<a class="button button3 float-end mt-4" href="{{ route('pedidos.create') }}">Crear Pedido</a>
 
-<h1 class="texth1 mt-5">Comidas</h1>
-<a class="button button4 float-end mt-4" href="{{ route('comidas.create') }}">Crear Comida</a>
 
 
 <table class="table table-striped table-hover">
     <thead>
         <tr></tr>
         <tr>
-            <th scope="col">N°</th>
-            <th scope="col">N° Comida</th>
-            <th scope="col">Service Delivery</th>
-            <th scope="col">Promoción</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">ID Delivery</th>
-            <th scope="col">ID Comida</th>
+            <th scope="col">ID</th>
+            <th scope="col">Numero de Cliente</th>
+            <th scope="col">Direccion de Envio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fechadepedido</th>
+            <th scope="col">IDdelivery</th>
         </tr>
     </thead>
     <tbody>
 
-        @foreach ($comidas as $comida) {{-- Loop products --}}
+        @foreach ($pedidos as $pedido) {{-- Loop products --}}
         <tr>
             <th scope="row">{{ $loop->iteration }}</th>
-            <td>{{ $comida->numerodecomida }}</td>
-            <td>{{ $comida->serviciodelivery }}</td>
-            <td>{{ $comida->promocion }}</td>
-            <td>{{ $comida->descripcion }}</td>
-            <td>{{ $comida->iddelivery }}</td>
-            <td>{{ $comida->idcomida }}</td>
+            <td>{{ $pedido->numerodecliente }}</td>
+            <td>{{ $pedido->direcciondeenvio }}</td>
+            <td>{{ $pedido->cantidad }}</td>
+            <td>{{ $pedido->fechadepedido }}</td>
+            {{-- <td>{{ $pedido->iddelivery }}</td> --}}
+            <td>{{ $pedido->idpedido }}</td>
             <td>
 
                 <div class="dropdown"> {{-- Dropdown --}}
@@ -44,13 +43,13 @@
                         Action
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="actionDropdown">
-                        <a class="dropdown-item" href="{{ route('comidas.show', $comida->idcomida) }}">View</a> {{-- View --}}
-                        <a class="dropdown-item" href="{{ route('comidas.edit', $comida->idcomida) }}">Edit</a> {{-- Edit --}}
+                        <a class="dropdown-item" href="{{ route('pedidos.show', $pedido->idpedido) }}">View</a> {{-- View --}}
+                        <a class="dropdown-item" href="{{ route('pedidos.edit', $pedido->idpedido) }}">Edit</a> {{-- Edit --}}
                         {{-- <li> --}}
                             <hr class="dropdown-divider">
                         {{-- </li> --}}
                         {{-- <li> --}}
-                            <form action="{{ route('comidas.destroy', $comida->idcomida) }}" method="post"> {{-- Delete --}}
+                            <form action="{{ route('pedidos.destroy', $pedido->idpedido) }}" method="post"> {{-- Delete --}}
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="dropdown-item">Delete</button>
